@@ -10,18 +10,32 @@
   </div>
 </template>
 
+<script setup>
+import { ref } from 'vue'
+
+const counter = ref(10);
+
+const decreaseCounter = () => {
+  counter.value--;
+}
+const increaseCounter = () => {
+  counter.value++;
+}
+</script>
+
+<!--
 <script>
 import { ref } from 'vue'
 
 export default {
   setup() {
-    const counter = ref(10)
+    const counter = ref(10);
 
     const decreaseCounter = () => {
-      counter.value--
+      counter.value--;
     }
     const increaseCounter = () => {
-      counter.value++
+      counter.value++;
     }
 
     return {
@@ -32,7 +46,7 @@ export default {
   }
 }
 </script>
-
+-->
 <!--
   OPTIONS API
 <script>
