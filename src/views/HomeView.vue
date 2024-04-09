@@ -16,7 +16,7 @@
 
     <div class="edit">
       <h4>Edit counter title</h4>
-      <input v-model="counterData.title" type="text">
+      <input v-model="counterData.title" type="text" v-autofocus>
     </div>
 
   </div>
@@ -24,8 +24,19 @@
 
 <script setup>
 import { computed, onActivated, onBeforeMount, onBeforeUnmount, onBeforeUpdate, onDeactivated, onMounted, onUnmounted, onUpdated, reactive, watch } from 'vue'
+import { vAutofocus } from '@/directives/vAutofocus'
 
+/*
+  app title
+*/
 const appTitle = 'My Amazing Counter App';
+
+onMounted(() => {
+  console.log('Do stuff related to app title')
+}) 
+/*
+  coutner
+*/
 
 const counterData = reactive({
   count: 0,
@@ -52,6 +63,10 @@ const increaseCounter = (amount, event) => {
   console.log(event)
   counterData.count += amount;
 }
+
+/*
+  lifecycle hooks
+*/
 onBeforeMount(() => {
   console.log('onBeforeMount')
 })
@@ -76,6 +91,7 @@ onBeforeUpdate(() => {
 onUpdated(() => {
   console.log('onUpdated')
 })
+
 </script>
 
 <!--
@@ -112,12 +128,35 @@ export default {
       counter: 0
     }
   },
+  computed: {
+    myComputedProperty() {
+      // perform logic based on a data property
+      return 'my result'
+    }
+  },
+  watch: {
+    count(newCount, oldCount) {
+      if (newCount == 20) alert ('asdfasd')
+    }
+  }
   methods: {
     decreaseCounter() {
       this.counter--
     },
     increaseCounter() {
       this.counter++
+    }
+  },
+  mounted() {
+    console.log('mounted')
+  }, unmounted() {
+    console.log('unmounted')
+  },
+  directives: {
+    autofocus: {
+      mounted(el) {
+        el.focus()
+      }
     }
   }
 }
