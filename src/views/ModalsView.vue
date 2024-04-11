@@ -2,7 +2,12 @@
     <div class="modals" >
         <h1>Modals</h1>
         <button @click="showModal = true">Show modal</button>
-        <Modal v-if="showModal"></Modal>
+        <Modal v-if="showModal">
+            <template #title>My new Title</template>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab suscipit nisi dolorum architecto,
+                quos, voluptate nemo itaque rerum beatae quo hic. Nobis alias eligendi quidem quasi adipisci
+                expedita libero explicabo.</p>
+        </Modal>
 
     </div>
 </template>
