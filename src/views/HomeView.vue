@@ -1,7 +1,7 @@
 <template>
   <div class="home">
 
-    <h2>{{ appTitle }}</h2>
+    <h2 ref="appTitleRef">{{ appTitle }}</h2>
     <h3>{{ counterData.title }}:</h3>
 
     <div>
@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { computed, onActivated, onBeforeMount, onBeforeUnmount, onBeforeUpdate, onDeactivated, onMounted, onUnmounted, onUpdated, reactive, watch } from 'vue'
+import { computed, nextTick, onActivated, onBeforeMount, onBeforeUnmount, onBeforeUpdate, onDeactivated, onMounted, onUnmounted, onUpdated, reactive, ref, watch } from 'vue'
 import { vAutofocus } from '@/directives/vAutofocus'
 
 /*
@@ -31,8 +31,10 @@ import { vAutofocus } from '@/directives/vAutofocus'
 */
 const appTitle = 'My Amazing Counter App';
 
+const appTitleRef = ref(null)
+
 onMounted(() => {
-  console.log('Do stuff related to app title')
+  console.log(`The app title is ${ appTitleRef.value.offsetWidth} px` )
 }) 
 /*
   coutner
@@ -62,7 +64,16 @@ const decreaseCounter = (amount) => {
 const increaseCounter = (amount, event) => {
   console.log(event)
   counterData.count += amount;
+  nextTick(() => {
+    console.log('do something when counter is updated in the dom, test next tick')
+  })
 }
+//another way to write this function above
+// const increaseCounter = async (amount, event) => {
+//   counterData.count += amount;
+//   await nextTick()
+//     console.log('do something when counter is updated in the dom, test next tick')
+// }
 
 /*
   lifecycle hooks
