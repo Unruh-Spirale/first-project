@@ -28,13 +28,13 @@ const props = defineProps({
 /*
     emits
 */
-const emit = defineEmits(['hideModal'])
+const emit = defineEmits(['update:modelValue'])
 /*
     handle button click
 */
 const handleButtonClick = () => {
     console.log('handleButtonClick')
-    emit('hideModal')
+    emit('update:modelValue', false)
 }
 </script>
 
