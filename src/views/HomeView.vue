@@ -23,7 +23,8 @@
 </template>
 
 <script setup>
-import { computed, nextTick, onActivated, onBeforeMount, onBeforeUnmount, onBeforeUpdate, onDeactivated, onMounted, onUnmounted, onUpdated, reactive, ref, watch } from 'vue'
+import { onActivated, onBeforeMount, onBeforeUnmount, onBeforeUpdate, onDeactivated, onMounted, onUnmounted, onUpdated, ref } from 'vue'
+import { useCounter} from '@/use/useCoutner'
 import { vAutofocus } from '@/directives/vAutofocus'
 
 /*
@@ -40,6 +41,10 @@ onMounted(() => {
   coutner
 */
 
+const { counterData, oddOrEven, increaseCounter, decreaseCounter  } = useCounter()
+
+
+/*
 const counterData = reactive({
   count: 0,
   title: 'My counter'
@@ -68,6 +73,7 @@ const increaseCounter = (amount, event) => {
     console.log('do something when counter is updated in the dom, test next tick')
   })
 }
+*/
 //another way to write this function above
 // const increaseCounter = async (amount, event) => {
 //   counterData.count += amount;
