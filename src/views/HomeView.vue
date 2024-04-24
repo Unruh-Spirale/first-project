@@ -24,7 +24,7 @@
 
 <script setup>
 import { onActivated, onBeforeMount, onBeforeUnmount, onBeforeUpdate, onDeactivated, onMounted, onUnmounted, onUpdated, ref } from 'vue'
-import { useCounter} from '@/use/useCoutner'
+import { useCounter} from '@/use/useCounter'
 import { vAutofocus } from '@/directives/vAutofocus'
 
 /*
